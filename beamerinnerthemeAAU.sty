@@ -1,0 +1,71 @@
+% Part page: default
+
+\newif\ifbeamer@secheadings
+
+\DeclareOptionBeamer{secnames}{\csname beamer@secheadings#1\endcsname}
+%\ExecuteOptionsBeamer{secnames=false}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\defbeamertemplate*{part page}{AAU}[1][]
+{
+  \begin{centering}
+    \ifbeamer@secheadings%
+    {\usebeamerfont{part name}\usebeamercolor[fg]{part name}\partname~\insertromanpartnumber}
+    \vskip1em\par
+    \fi
+    \begin{beamercolorbox}[sep=16pt,center,#1]{part title}
+      \usebeamerfont{part title}\insertpart\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+
+% Section page: default
+
+\defbeamertemplate*{section page}{AAU}[1][]
+{
+  \begin{centering}
+    \ifbeamer@secheadings
+    {\usebeamerfont{section name}\usebeamercolor[fg]{section name}\sectionname~\insertsectionnumber}
+    \vskip1em\par
+    \fi
+    \begin{beamercolorbox}[sep=12pt,center,#1]{part title}
+      \usebeamerfont{section title}\insertsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+% Subection page: default
+
+\defbeamertemplate*{subsection page}{AAU}[1][]
+{
+  \begin{centering}
+    \ifbeamer@secheadings%
+    {\usebeamerfont{subsection name}\usebeamercolor[fg]{subsection name}\subsectionname~\insertsubsectionnumber}
+    \vskip1em\par
+    \fi
+    \begin{beamercolorbox}[sep=8pt,center,#1]{part title}
+      \usebeamerfont{subsection title}\insertsubsection\par
+    \end{beamercolorbox}
+  \end{centering}
+}
+
+\setbeamertemplate{part page}[AAU]%[colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+\setbeamertemplate{section page}[AAU]
+\setbeamertemplate{subsection page}[AAU]
+
+\mode<all>
+
+
+
+
+\setbeamertemplate{blocks}[rounded][shadow=\beamer@themerounded@shadow]
+%\setbeamertemplate{items}[circle]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+%\setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+  
+
